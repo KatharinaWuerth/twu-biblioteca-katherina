@@ -12,16 +12,11 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class ExampleTest {
+public class BibliotecaAppTest {
     @Test
     public void shouldReturnWelcomeMessage() {
         String greeting = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!";
         assertEquals(BibliotecaApp.welcomeMessage(), greeting);
     }
 
-    @Test
-    public void shouldShowListOfBooks() throws IOException {
-        List<String> books = Files.readAllLines(Paths.get("/Users/katharinawuerth/Desktop/TWU_Biblioteca-master/src/com/twu/biblioteca/listOfBooks.txt"), StandardCharsets.UTF_8);
-        assertEquals(BibliotecaApp.getListOfBooks(), books);
-    }
 }
