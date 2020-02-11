@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import com.sun.xml.internal.bind.v2.TODO;
+import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
 
 import java.util.Arrays;
 import java.util.ArrayList;
@@ -22,6 +23,11 @@ public class Library {
 
     public static Book checkoutTheSelectedBook(int selectedNumber, Library lib) {
         for (int i = 0; i < bookLists.size(); i++) {
+            if(selectedNumber < 0 || selectedNumber > bookLists.size() ) {
+                System.out.println("Sorry, that book is not available");
+                return null;
+            }
+            System.out.println("Thank you! Enjoy the book");
             return bookLists.remove(selectedNumber - 1);
         }
         return null;
@@ -34,7 +40,7 @@ public class Library {
         int inputNumber = sc.nextInt();
         return checkoutTheSelectedBook(inputNumber, lib);
     }
-    
+
 }
 
 ;

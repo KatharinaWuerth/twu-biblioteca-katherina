@@ -31,12 +31,28 @@ public class LibraryTest {
     }
 
     @Test
-    public void shouldRemoveSelectedBookFromBookListAndReturnUpdatedBookList(){
+    public void shouldRemoveSelectedBookFromBookListAndReturnUpdatedBookListAndReturnMessageForSuccess(){
         Library books = new Library(new Book("Lord of the Rings", "J.R.R. Tolkien", 1954),
                 new Book("The Hobbit", "J.R.R. Tolkien", 1937));
         Library.checkoutTheSelectedBook(2, books);
         books.printBookList();
-        assertEquals("1. Lord of the Rings | J.R.R. Tolkien | 1954\n", outputStream.toString());
+        assertEquals("Thank you! Enjoy the book\n1. Lord of the Rings | J.R.R. Tolkien | 1954\n", outputStream.toString());
+    }
+
+    @Test
+    public void shouldTellTheCustomerThatHisChoiceForCheckoutIsInvalid(){
+        Library books = new Library(new Book("Lord of the Rings", "J.R.R. Tolkien", 1954),
+                new Book("The Hobbit", "J.R.R. Tolkien", 1937));
+        Library.checkoutTheSelectedBook(5, books);
+        assertEquals("Sorry, that book is not available\n", outputStream.toString());
+    }
+
+    @Test
+    public void shouldTellTheCustomerThatHisCheckoutWasSucessfull(){
+        Library books = new Library(new Book("Lord of the Rings", "J.R.R. Tolkien", 1954),
+                new Book("The Hobbit", "J.R.R. Tolkien", 1937));
+        Library.checkoutTheSelectedBook(2, books);
+        assertEquals("Thank you! Enjoy the book\n", outputStream.toString());
     }
 
 
