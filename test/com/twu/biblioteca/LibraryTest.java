@@ -55,5 +55,11 @@ public class LibraryTest {
         assertEquals("Thank you! Enjoy the book\n", outputStream.toString());
     }
 
+    /*
+    @Test
+    public void shouldDisplayTheCheckOutBooksInArrayListCheckedOutBooks(){
+
+    }
+*/
 
 }

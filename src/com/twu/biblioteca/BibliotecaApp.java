@@ -19,8 +19,6 @@ public class BibliotecaApp {
     );
 
 
-
-
     public static void main(String[] args) throws Exception {
         welcomeMessage();
 
@@ -33,8 +31,9 @@ public class BibliotecaApp {
                 System.exit(0);
             } else if (menuOption.equals("Checkout Book")) {
                 Library.showNewBookListWithAvailableBooks(bookLists);
-            }
-            else {
+            } else if (menuOption.equals("Return Book")) {
+                Library.returnBookToBookLists();
+            } else {
                 System.out.println(menuOption);
             }
 

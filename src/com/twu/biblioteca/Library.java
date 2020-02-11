@@ -1,34 +1,46 @@
 package com.twu.biblioteca;
 
-import com.sun.xml.internal.bind.v2.TODO;
-import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
-
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 
 public class Library {
-    private static ArrayList<Book> bookLists;
+    private static ArrayList<Book> books;
+    private static ArrayList<Book> checkedOutBooks;
 
     public Library(Book... books) {
-        bookLists = new ArrayList<Book>(Arrays.asList(books));
+        Library.books = new ArrayList<Book>(Arrays.asList(books));
+        checkedOutBooks = new ArrayList<Book>();
     }
 
     public void printBookList() {
-        for (int i = 0; i < bookLists.size(); i++) {
-            System.out.println(i + 1 + ". " + bookLists.get(i).displayBook());
+        for (int i = 0; i < books.size(); i++) {
+            System.out.println(i + 1 + ". " + books.get(i).displayBook());
         }
     }
 
+
+    public void printCheckedOutBooks() {
+        if (checkedOutBooks.size() > -1) {
+            for (int i = 0; i < checkedOutBooks.size(); i++) {
+                System.out.println(i + 1 + ". " + checkedOutBooks.get(i).displayBook());
+            }
+        } else
+            System.out.println("There a no checked-out Books");
+
+    }
+
     public static Book checkoutTheSelectedBook(int selectedNumber, Library lib) {
-        for (int i = 0; i < bookLists.size(); i++) {
-            if(selectedNumber < 0 || selectedNumber > bookLists.size() ) {
+        for (int i = 0; i < books.size(); i++) {
+            if (selectedNumber < 0 || selectedNumber > books.size()) {
                 System.out.println("Sorry, that book is not available");
                 return null;
             }
             System.out.println("Thank you! Enjoy the book");
-            return bookLists.remove(selectedNumber - 1);
+            Book selectedBook = books.get(selectedNumber - 1);
+            checkedOutBooks.add(selectedBook);
+            return books.remove(selectedNumber - 1);
         }
         return null;
     }
@@ -40,6 +52,18 @@ public class Library {
         int inputNumber = sc.nextInt();
         return checkoutTheSelectedBook(inputNumber, lib);
     }
+
+    public static void returnBookToBookLists() {
+        Scanner sc = new Scanner(System.in);
+        BibliotecaApp.bookLists.printCheckedOutBooks();
+        System.out.println("To return a book type in the title");
+        int inputNumber = sc.nextInt();
+        Book selectedBook = books.get(inputNumber - 1);
+        checkedOutBooks.remove(selectedBook);
+        books.add(selectedBook);
+        System.out.println("Thank you for returning the book!");
+    }
+
 
 }
 
