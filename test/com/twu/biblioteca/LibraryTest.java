@@ -30,5 +30,14 @@ public class LibraryTest {
         assertEquals("1. Lord of the Rings | J.R.R. Tolkien | 1954\n2. The Hobbit | J.R.R. Tolkien | 1937\n", outputStream.toString());
     }
 
+    @Test
+    public void shouldRemoveSelectedBookFromBookListAndReturnUpdatedBookList(){
+        Library books = new Library(new Book("Lord of the Rings", "J.R.R. Tolkien", 1954),
+                new Book("The Hobbit", "J.R.R. Tolkien", 1937));
+        Library.checkoutTheSelectedBook(2, books);
+        books.printBookList();
+        assertEquals("1. Lord of the Rings | J.R.R. Tolkien | 1954\n", outputStream.toString());
+    }
+
 
 }

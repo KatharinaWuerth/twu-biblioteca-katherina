@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 
+import java.util.Scanner;
 
 public class BibliotecaApp {
 
@@ -18,19 +19,25 @@ public class BibliotecaApp {
     );
 
 
+
+
     public static void main(String[] args) throws Exception {
         welcomeMessage();
 
-        while(true) {
+        while (true) {
             String menuOption = Menu.selectMenu();
 
             if (menuOption.equals("List of Books")) {
                 bookLists.printBookList();
             } else if (menuOption.equals("Quit Biblioteca")) {
                 System.exit(0);
-            } else {
+            } else if (menuOption.equals("Checkout Book")) {
+                Library.showNewBookListWithAvailableBooks(bookLists);
+            }
+            else {
                 System.out.println(menuOption);
             }
+
             System.out.println();
         }
     }
