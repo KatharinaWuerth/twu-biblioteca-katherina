@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Menu {
 
-    private static String[] menu = new String[]{"List of Books"};
+    private static String[] menu = new String[]{"List of Books", "Quit Biblioteca"};
 
     public static void printAllMenuItems() {
         for (int i = 0; i < menu.length; i++) {
@@ -13,7 +13,7 @@ public class Menu {
 
     public static String selectItemFromMenu(int listNumber) {
         if (listNumber < 1 || listNumber > menu.length ) {
-            System.out.println("That is an invalid option");
+            System.out.println("Please select a valid option!");
         }
         return menu[listNumber-1];
     }
