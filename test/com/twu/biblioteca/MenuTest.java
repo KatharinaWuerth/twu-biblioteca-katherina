@@ -1,8 +1,11 @@
 package com.twu.biblioteca;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
+import java.awt.*;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
@@ -31,13 +34,10 @@ public class MenuTest {
         assertEquals("List of Books", Menu.selectItemFromMenu(1));
     }
 
-/*
-    @Test
-    public void shouldShowAnErrorMessageIfWrongInputForMenuOption() throws Exception {
-        String expectedMessage = "Please select a valid option";
-        String actualMessage = Menu.selectItemFromMenu(6);
-        assertTrue(actualMessage.contains(expectedMessage));
+
+    @Test(expected = MenuItemNotAvailableException.class)
+    public void shouldTestExceptionMessage() throws Exception {
+        Menu.selectItemFromMenu(6);
     }
-*/
 
 }

@@ -1,4 +1,8 @@
 package com.twu.biblioteca;
+
+import sun.tools.tree.NewInstanceExpression;
+
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
@@ -11,11 +15,12 @@ public class Menu {
         }
     }
 
-    public static String selectItemFromMenu(int listNumber) {
-        if (listNumber < 1 || listNumber > menu.length ) {
-            System.out.println("Please select a valid option!");
+    public static String selectItemFromMenu(int listNumber) throws MenuItemNotAvailableException {
+        if (listNumber < 1 || listNumber > menu.length) {
+            throw new MenuItemNotAvailableException("Please select a valid option!");
         }
-        return menu[listNumber-1];
+        return menu[listNumber - 1];
+
     }
 
 
@@ -23,9 +28,20 @@ public class Menu {
         Scanner sc = new Scanner(System.in);
         printAllMenuItems();
         System.out.println("To select a menu item please enter the corresponding number");
-        int inputNumber = sc.nextInt();
-        return selectItemFromMenu(inputNumber);
+        try {
+            int inputNumber = sc.nextInt();
+            try {
+                return selectItemFromMenu(inputNumber);
+            } catch (MenuItemNotAvailableException e) {
+                System.out.println(e.getMessage());
+                return selectMenu();
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Please enter a number");
+            return selectMenu();
+        }
+
     }
 
-
 }
+

@@ -22,7 +22,7 @@ public class LibraryTest {
         System.setOut(new PrintStream(outputStream));
     }
 
-    @Test
+   /* @Test
     public void shouldPrintListOfBooks() {
         Library books = new Library(new Book("Lord of the Rings", "J.R.R. Tolkien", 1954),
                 new Book("The Hobbit", "J.R.R. Tolkien", 1937));
