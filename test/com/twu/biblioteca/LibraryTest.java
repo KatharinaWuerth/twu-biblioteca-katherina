@@ -6,6 +6,8 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -22,22 +24,25 @@ public class LibraryTest {
         System.setOut(new PrintStream(outputStream));
     }
 
-   /* @Test
+    @Test
     public void shouldPrintListOfBooks() {
-        Library books = new Library(new Book("Lord of the Rings", "J.R.R. Tolkien", 1954),
+        List<Book> expectedBooks = Arrays.asList(new Book("Lord of the Rings", "J.R.R. Tolkien", 1954),
                 new Book("The Hobbit", "J.R.R. Tolkien", 1937));
-        books.printBookList();
+
+        Library library = new Library(expectedBooks);
+        library.printNewBookList();
         assertEquals("1. Lord of the Rings | J.R.R. Tolkien | 1954\n2. The Hobbit | J.R.R. Tolkien | 1937\n", outputStream.toString());
     }
 
-    @Test
-    public void shouldRemoveSelectedBookFromBookListAndReturnUpdatedBookListAndReturnMessageForSuccess(){
-        Library books = new Library(new Book("Lord of the Rings", "J.R.R. Tolkien", 1954),
-                new Book("The Hobbit", "J.R.R. Tolkien", 1937));
-        Library.checkoutTheSelectedBook(2, books);
-        books.printBookList();
-        assertEquals("Thank you! Enjoy the book\n1. Lord of the Rings | J.R.R. Tolkien | 1954\n", outputStream.toString());
-    }
+//    @Test
+//    public void shouldRemoveSelectedBookFromBookListAndReturnUpdatedBookListAndReturnMessageForSuccess(){
+//        List<Book> expectedBooks = Arrays.asList(new Book("Lord of the Rings", "J.R.R. Tolkien", 1954),
+//                new Book("The Hobbit", "J.R.R. Tolkien", 1937));
+//        Library library = new Library(expectedBooks);
+//        Library.checkoutTheSelectedBook(2, library);
+//        library.printNewBookList();
+//        assertEquals("Thank you! Enjoy the book\n1. Lord of the Rings | J.R.R. Tolkien | 1954\n", outputStream.toString());
+//    }
 
     @Test
     public void shouldTellTheCustomerThatHisChoiceForCheckoutIsInvalid(){
@@ -54,12 +59,5 @@ public class LibraryTest {
         Library.checkoutTheSelectedBook(2, books);
         assertEquals("Thank you! Enjoy the book\n", outputStream.toString());
     }
-
-    /*
-    @Test
-    public void shouldDisplayTheCheckOutBooksInArrayListCheckedOutBooks(){
-
-    }
-*/
 
 }

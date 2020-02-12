@@ -16,7 +16,11 @@ public class Library {
 
         newBookList = new ArrayList<Book>(Arrays.asList(books));
         checkedOutBooks = new ArrayList<Book>();
+    }
 
+    public Library(List<Book> books) {
+        newBookList = books;
+        checkedOutBooks = new ArrayList<Book>();
     }
 
     public void printBookList(List<Book> list) {
@@ -27,14 +31,7 @@ public class Library {
 
     public void printNewBookList(){
         printBookList(newBookList);
-    };
-
-//    public void printCheckedOutBooks() {
-//        for (int i = 0; i < checkedOutBooks.size(); i++) {
-//            System.out.println(i + 1 + ". " + checkedOutBooks.get(i).displayBook());
-//        }
-//    }
-
+    }
 
     public static Book checkoutTheSelectedBook(int selectedNumber, Library lib) {
         for (int i = 0; i < newBookList.size(); i++) {
@@ -45,7 +42,8 @@ public class Library {
             System.out.println("Thank you! Enjoy the book");
             Book selectedBook = newBookList.get(selectedNumber - 1);
             checkedOutBooks.add(selectedBook);
-            return newBookList.remove(selectedNumber - 1);
+            newBookList.remove(selectedNumber - 1);
+            return selectedBook;
         }
         return null;
     }
