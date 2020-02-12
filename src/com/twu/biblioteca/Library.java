@@ -8,8 +8,8 @@ import java.util.Scanner;
 
 public class Library {
 
-    private static List<Book> newBookList;
-    private static List<Book> checkedOutBooks;
+    private List<Book> newBookList;
+    private List<Book> checkedOutBooks;
 
 
     public Library(Book... books) {
@@ -29,11 +29,11 @@ public class Library {
         }
     }
 
-    public void printNewBookList(){
+    public void printNewBookList() {
         printBookList(newBookList);
     }
 
-    public static Book checkoutTheSelectedBook(int selectedNumber, Library lib) {
+    public Book checkoutTheSelectedBook(int selectedNumber) {
         for (int i = 0; i < newBookList.size(); i++) {
             if (selectedNumber < 0 || selectedNumber > newBookList.size()) {
                 System.out.println("Sorry, that book is not available");
@@ -48,15 +48,15 @@ public class Library {
         return null;
     }
 
-    public static Book showNewBookListWithAvailableBooks(Library lib) {
+    public Book showNewBookListWithAvailableBooks() {
         Scanner sc = new Scanner(System.in);
         BibliotecaApp.library.printBookList(newBookList);
         System.out.println("To select a book for checkout please enter the book nr.");
         int inputNumber = sc.nextInt();
-        return checkoutTheSelectedBook(inputNumber, lib);
+        return checkoutTheSelectedBook(inputNumber);
     }
 
-    public static void returnBookToBookLists() {
+    public void returnBookToBookLists() {
         Scanner sc = new Scanner(System.in);
         BibliotecaApp.library.printBookList(checkedOutBooks);
         System.out.println("To return a book type in the number");
@@ -66,8 +66,5 @@ public class Library {
         newBookList.add(selectedBook);
         System.out.println("Thank you for returning the book!");
     }
-
-
 }
 
-;

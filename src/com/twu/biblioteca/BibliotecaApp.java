@@ -29,9 +29,9 @@ public class BibliotecaApp {
             } else if (menuOption.equals("Quit Biblioteca")) {
                 System.exit(0);
             } else if (menuOption.equals("Checkout Book")) {
-                Library.showNewBookListWithAvailableBooks(library);
+                library.showNewBookListWithAvailableBooks();
             } else if (menuOption.equals("Return Book")) {
-                Library.returnBookToBookLists();
+                library.returnBookToBookLists();
             } else {
                 System.out.println(menuOption);
             }

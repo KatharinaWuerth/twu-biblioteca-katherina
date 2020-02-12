@@ -48,7 +48,7 @@ public class LibraryTest {
     public void shouldTellTheCustomerThatHisChoiceForCheckoutIsInvalid(){
         Library books = new Library(new Book("Lord of the Rings", "J.R.R. Tolkien", 1954),
                 new Book("The Hobbit", "J.R.R. Tolkien", 1937));
-        Library.checkoutTheSelectedBook(5, books);
+        books.checkoutTheSelectedBook(5);
         assertEquals("Sorry, that book is not available\n", outputStream.toString());
     }
 
@@ -56,7 +56,7 @@ public class LibraryTest {
     public void shouldTellTheCustomerThatHisCheckoutWasSucessfull(){
         Library books = new Library(new Book("Lord of the Rings", "J.R.R. Tolkien", 1954),
                 new Book("The Hobbit", "J.R.R. Tolkien", 1937));
-        Library.checkoutTheSelectedBook(2, books);
+        books.checkoutTheSelectedBook(2);
         assertEquals("Thank you! Enjoy the book\n", outputStream.toString());
     }
 
