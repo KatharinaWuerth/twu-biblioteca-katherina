@@ -19,13 +19,13 @@ public class BibliotecaApp {
     );
 
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args)  {
         welcomeMessage();
 
         while (true) {
                 String menuOption = Menu.selectMenu();
             if (menuOption.equals("List of Books")) {
-                library.printBookList();
+                library.printNewBookList();
             } else if (menuOption.equals("Quit Biblioteca")) {
                 System.exit(0);
             } else if (menuOption.equals("Checkout Book")) {

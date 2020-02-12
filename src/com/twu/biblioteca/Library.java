@@ -19,17 +19,21 @@ public class Library {
 
     }
 
-    public void printBookList() {
-        for (int i = 0; i < newBookList.size(); i++) {
-            System.out.println(i + 1 + ". " + newBookList.get(i).displayBook());
+    public void printBookList(List<Book> list) {
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(i + 1 + ". " + list.get(i).displayBook());
         }
     }
 
-    public void printCheckedOutBooks() {
-        for (int i = 0; i < checkedOutBooks.size(); i++) {
-            System.out.println(i + 1 + ". " + checkedOutBooks.get(i).displayBook());
-        }
-    }
+    public void printNewBookList(){
+        printBookList(newBookList);
+    };
+
+//    public void printCheckedOutBooks() {
+//        for (int i = 0; i < checkedOutBooks.size(); i++) {
+//            System.out.println(i + 1 + ". " + checkedOutBooks.get(i).displayBook());
+//        }
+//    }
 
 
     public static Book checkoutTheSelectedBook(int selectedNumber, Library lib) {
@@ -48,7 +52,7 @@ public class Library {
 
     public static Book showNewBookListWithAvailableBooks(Library lib) {
         Scanner sc = new Scanner(System.in);
-        BibliotecaApp.library.printBookList();
+        BibliotecaApp.library.printBookList(newBookList);
         System.out.println("To select a book for checkout please enter the book nr.");
         int inputNumber = sc.nextInt();
         return checkoutTheSelectedBook(inputNumber, lib);
@@ -56,7 +60,7 @@ public class Library {
 
     public static void returnBookToBookLists() {
         Scanner sc = new Scanner(System.in);
-        BibliotecaApp.library.printCheckedOutBooks();
+        BibliotecaApp.library.printBookList(checkedOutBooks);
         System.out.println("To return a book type in the number");
         int inputNumber = sc.nextInt();
         Book selectedBook = newBookList.get(inputNumber - 1);
