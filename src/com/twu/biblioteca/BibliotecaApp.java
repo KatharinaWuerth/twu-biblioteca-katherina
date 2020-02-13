@@ -1,8 +1,6 @@
 package com.twu.biblioteca;
 
 
-import java.util.InputMismatchException;
-
 public class BibliotecaApp {
 
     public static String welcomeMessage() {
@@ -11,7 +9,7 @@ public class BibliotecaApp {
         return message;
     }
 
-    public static Library library = new Library(
+    public static Library movieLibrary = new Library(
             new Book("Lord of the Rings", "J.R.R. Tolkien", 1954),
             new Book("The Hobbit", "J.R.R. Tolkien", 1937),
             new Book("The 6th extinction", "Elizabeth Kolbert", 2014),
@@ -25,13 +23,13 @@ public class BibliotecaApp {
         while (true) {
                 String menuOption = Menu.selectMenu();
             if (menuOption.equals("List of Books")) {
-                library.printNewBookList();
+                movieLibrary.printNewBookList();
             } else if (menuOption.equals("Quit Biblioteca")) {
                 System.exit(0);
             } else if (menuOption.equals("Checkout Book")) {
-                library.showNewBookListWithAvailableBooks();
+                movieLibrary.showNewBookListWithAvailableBooks();
             } else if (menuOption.equals("Return Book")) {
-                library.returnBookToBookLists();
+                movieLibrary.returnBookToBookLists();
             } else {
                 System.out.println(menuOption);
             }

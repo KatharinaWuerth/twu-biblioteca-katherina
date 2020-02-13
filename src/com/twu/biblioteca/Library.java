@@ -50,7 +50,7 @@ public class Library {
 
     public Book showNewBookListWithAvailableBooks() {
         Scanner sc = new Scanner(System.in);
-        BibliotecaApp.library.printBookList(newBookList);
+        BibliotecaApp.movieLibrary.printBookList(newBookList);
         System.out.println("To select a book for checkout please enter the book nr.");
         int inputNumber = sc.nextInt();
         return checkoutTheSelectedBook(inputNumber);
@@ -58,7 +58,7 @@ public class Library {
 
     public void returnBookToBookLists() {
         Scanner sc = new Scanner(System.in);
-        BibliotecaApp.library.printBookList(checkedOutBooks);
+        BibliotecaApp.movieLibrary.printBookList(checkedOutBooks);
         System.out.println("To return a book type in the number");
         int inputNumber = sc.nextInt();
         Book selectedBook = newBookList.get(inputNumber - 1);
