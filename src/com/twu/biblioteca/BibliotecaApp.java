@@ -39,6 +39,8 @@ public class BibliotecaApp {
                 bookLibrary.returnBookToBookLists();
             } else if (menuOption.equals("List of Movies")) {
                 movieLibrary.printNewMovieList();
+            } else if (menuOption.equals("Checkout Movie")) {
+                movieLibrary.showNewMovieListWithAvailableMovies();
             } else {
                 System.out.println(menuOption);
             }
