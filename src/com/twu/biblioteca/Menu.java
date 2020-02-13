@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Menu {
 
-    private static String[] menu = new String[]{"List of Books", "Checkout Book", "Return Book", "Quit Biblioteca"};
+    private static String[] menu = new String[]{"List of Books", "List of Movies", "Checkout Book", "Return Book", "Quit Biblioteca"};
 
     public static void printAllMenuItems() {
         for (int i = 0; i < menu.length; i++) {
