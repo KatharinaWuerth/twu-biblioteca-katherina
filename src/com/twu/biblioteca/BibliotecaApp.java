@@ -1,15 +1,21 @@
 package com.twu.biblioteca;
 
 
+import com.twu.biblioteca.service.Book;
+import com.twu.biblioteca.service.BookLibrary;
+import com.twu.biblioteca.service.Movie;
+import com.twu.biblioteca.service.MovieLibrary;
+import com.twu.biblioteca.textui.MenuItemNotAvailableException;
+import com.twu.biblioteca.textui.MenuState;
+import com.twu.biblioteca.textui.TextUIState;
+import com.twu.biblioteca.textui.WelcomeState;
+
+import java.util.Scanner;
+
 public class BibliotecaApp {
 
-    public static String welcomeMessage() {
-        String message = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!";
-        System.out.println(message);
-        return message;
-    }
 
-    public static Library bookLibrary = new Library(
+    public static BookLibrary bookLibrary = new BookLibrary(
             new Book("Lord of the Rings", "J.R.R. Tolkien", 1954),
             new Book("The Hobbit", "J.R.R. Tolkien", 1937),
             new Book("The 6th extinction", "Elizabeth Kolbert", 2014),
@@ -25,27 +31,19 @@ public class BibliotecaApp {
 
 
     public static void main(String[] args) {
-        welcomeMessage();
-
-        while (true) {
-            String menuOption = Menu.selectMenu();
-            if (menuOption.equals("List of Books")) {
-                bookLibrary.printNewBookList();
-            } else if (menuOption.equals("Quit Biblioteca")) {
-                System.exit(0);
-            } else if (menuOption.equals("Checkout Book")) {
-                bookLibrary.showNewBookListWithAvailableBooks();
-            } else if (menuOption.equals("Return Book")) {
-                bookLibrary.returnBookToBookLists();
-            } else if (menuOption.equals("List of Movies")) {
-                movieLibrary.printNewMovieList();
-            } else if (menuOption.equals("Checkout Movie")) {
-                movieLibrary.showNewMovieListWithAvailableMovies();
-            } else {
-                System.out.println(menuOption);
+        Scanner sc = new Scanner(System.in);
+        TextUIState currentState = new WelcomeState();
+        while (currentState != null) {
+            currentState.onEnterState();
+            String input = currentState.takesInput() ? sc.next() : "";
+            try {
+            currentState = currentState.interpret(input);
             }
-
+            catch (MenuItemNotAvailableException e) {
+                System.out.println("Please select a existing number");
+            }
             System.out.println();
         }
+        System.out.println("Tschuess");
     }
 }

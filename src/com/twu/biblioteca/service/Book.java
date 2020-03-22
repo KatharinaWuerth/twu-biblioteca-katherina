@@ -1,4 +1,4 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.service;
 
 public class Book {
     private String title;

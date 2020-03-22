@@ -1,4 +1,4 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.service;
 
 public class Movie {
     private String title;
