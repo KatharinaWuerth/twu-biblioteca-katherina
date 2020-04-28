@@ -36,7 +36,7 @@ public class MovieLibraryTest {
     }*/
 
     @Test
-    public void shouldTellTheCustomerThatHisCheckoutWasSucessfull(){
+    public void shouldTellTheCustomerThatHisCheckoutWasSuccessful(){
         MovieLibrary movies = new MovieLibrary(new Movie("The Fellowship of the Ring", 2001, "Peter Jackson", 10),
                 new Movie("The Two Towers", 2002, "Peter Jackson", 8));
         movies.checkoutTheSelectedMovie(2);

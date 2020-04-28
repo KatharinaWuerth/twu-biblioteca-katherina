@@ -2,7 +2,6 @@ package com.twu.biblioteca.textui;
 
 public class MenuState extends NumberSelectionState {
 
-    //private static String[] menu = new String[]{"List of Books", "List of Movies", "Checkout Book", "Return Book", "Checkout Movie", "Quit Biblioteca"};
 
     private static TextUIState[] successors = new TextUIState[]{new ShowBooksState(), new ShowMoviesState(), new CheckoutBookState(), new CheckoutMovieState(), new ReturnBookState(), new ByeState()};
 
@@ -24,7 +23,6 @@ public class MenuState extends NumberSelectionState {
         System.out.println("To select a menu item please enter the corresponding number");
     }
 
-    //was bedeutet das noch mal?
     @Override
     public boolean takesInput() {
         return true;

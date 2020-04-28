@@ -1,7 +1,5 @@
 package com.twu.biblioteca.textui;
 
-//Hilfsklasse; abstract = class ist unfertig - erst mit Kindclass wird sie funktionsfaehig
-//hat implementierte und nicht implementierte Methoden - die nicht implementierten Methoden sind mit abstract gekennzeichnet
 public abstract class NumberSelectionState implements TextUIState {
 
     protected abstract int getSizeOfArray();
